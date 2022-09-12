@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rammetto One', cursive;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 8rem;
+}
