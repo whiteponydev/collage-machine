@@ -27,20 +27,18 @@ userInput.addEventListener("change", () => {
     container.addEventListener("click", (e) => {
         const randomNumber = Math.floor(Math.random() * userInput.files.length);
         const newImage = document.createElement("img");
-        const x = e.clientX - 50;
-        const y = e.clientY - 50;
         newImage.src = localStorage.getItem(randomNumber);
-        newImage.style.width = "500px";
-        newImage.style.position = "absolute";
-        newImage.style.left = x + "px";
-        newImage.style.top = y + "px";
         container.appendChild(newImage);
+        const x = e.clientX;
+        const y = e.clientY;
+        newImage.style.position = "absolute";
+        newImage.style.left = x - newImage.offsetWidth / 2 + "px";
+        newImage.style.top = y - newImage.offsetHeight / 2 + "px"; 
     });
 });
 
-// This part of the code clears localstorage when the user closes the window
+// This part of the code clears localstorage when the user closes the window    
 
-window.onunload = closingCode;
-function closingCode(){
+window.onunload = function(){
     localStorage.clear();
-}
+};
