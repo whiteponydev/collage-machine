@@ -25,15 +25,17 @@ userInput.addEventListener("change", () => {
     // Then when all the images are set in localstorage the user can click on the page to insert images randomly
 
     container.addEventListener("click", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
         const randomNumber = Math.floor(Math.random() * userInput.files.length);
         const newImage = document.createElement("img");
         newImage.src = localStorage.getItem(randomNumber);
+        newImage.addEventListener('load', function() {
+            newImage.style.position = "absolute"; 
+            newImage.style.left = x - newImage.offsetWidth / 2 + "px";
+            newImage.style.top = y - newImage.offsetHeight / 2 + "px";
+        });
         container.appendChild(newImage);
-        const x = e.clientX;
-        const y = e.clientY;
-        newImage.style.position = "absolute";
-        newImage.style.left = x - newImage.offsetWidth / 2 + "px";
-        newImage.style.top = y - newImage.offsetHeight / 2 + "px"; 
     });
 });
 
